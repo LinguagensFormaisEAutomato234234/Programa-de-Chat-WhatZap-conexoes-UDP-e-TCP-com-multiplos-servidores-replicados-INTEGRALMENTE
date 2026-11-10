@@ -66,7 +66,7 @@ public class PropagarRequisicaoComunicacaoBroadcast {
         for (ListaDupla.Element ptr = broadcasts.getHead(); ptr != null; ptr = ptr.getNext()) {
             try {
                  DatagramPacket pacoteRequisicaoComunicacao = new DatagramPacket(pedido, pedido.length, ((InetAddress)ptr.getValor()), portaBroadcast);
-                 socket.send(pacoteRequisicaoComunicacao);
+                 for(int i = 0; i < 12; i++) socket.send(pacoteRequisicaoComunicacao);
             } catch (Exception e) {
                  System.err.println("CLIENTE - AVISO: broadcast falhou para " + ((InetAddress)ptr.getValor()).getHostAddress() + ": " + e.getMessage());
             } // fim do try-catch
